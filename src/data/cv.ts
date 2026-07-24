@@ -5,7 +5,9 @@ export const profile = {
   name: "Md Abdul Aziz",
   shortName: "Abdul Aziz",
   initials: "AA",
-  role: "Fullstack AI Engineer",
+  roleArticle: "an",
+  role: "Aspiring Fullstack AI Engineer",
+  companyLead: "researching at",
   company: "Fraunhofer FOKUS",
   email: "abdulazizbd17@gmail.com",
   website: "https://azizcode.dev",
@@ -17,11 +19,86 @@ export const profile = {
   location: {
     city: "Potsdam",
     country: "Germany",
+    lat: 52.3906,
+    lon: 13.0645,
     coords: "52.3906° N, 13.0645° E",
     relocation: "Open to Relocate: Anywhere in Germany",
     workModes: ["On-site", "Hybrid", "Remote"],
   },
 };
+
+export type Publication = {
+  title: string;
+  authors: string;
+  venue: string;
+  year: string;
+  url?: string;
+};
+
+export const publications: Publication[] = [
+  {
+    title:
+      "LLM-Assisted Course Search: Parsing Structured Parameters from Natural Language Queries",
+    authors: "M. Upravitelev, C. Krauss, T.-S. An, B. Do, N. Schoppa, Md Abdul Aziz",
+    venue: "IEEE ECEI",
+    year: "2025",
+  },
+  {
+    title:
+      "Sign Language Gesture Recognition using Bayesian Optimization and Transfer Learning",
+    authors: "C. Lippert, M. H. Shahriar, et al., Md Abdul Aziz",
+    venue: "ResearchGate",
+    year: "2022",
+    url: "http://dx.doi.org/10.13140/RG.2.2.32482.40643",
+  },
+  {
+    title:
+      "An In-Depth Analysis of Segmentation Techniques in Automated Local Fruit Disease Recognition",
+    authors: "M. T. Habib, A. Khatun, Md Abdul Aziz, M. S. Uddin, F. Ahmed",
+    venue: "Springer",
+    year: "2020",
+    url: "https://doi.org/10.1007/978-981-33-6424-0_9",
+  },
+];
+
+export type Language = {
+  flag: string;
+  name: string;
+  level: string;
+  pct: number;
+  joke: string;
+};
+
+export const languages: Language[] = [
+  {
+    flag: "🇬🇧",
+    name: "English",
+    level: "Professional",
+    pct: 88,
+    joke: "Fluent in meetings, memes & merge conflicts",
+  },
+  {
+    flag: "🇩🇪",
+    name: "German",
+    level: "B1 · exam candidate",
+    pct: 55,
+    joke: "Ich schaffe das! 💪",
+  },
+  {
+    flag: "🐍",
+    name: "Python",
+    level: "Native",
+    pct: 97,
+    joke: "My actual mother tongue",
+  },
+  {
+    flag: "⌨️",
+    name: "TypeScript",
+    level: "Fluent",
+    pct: 92,
+    joke: "strict mode: always on",
+  },
+];
 
 export type TimelineItem = {
   title: string;

@@ -15,9 +15,9 @@ function AvatarChip() {
     <motion.span
       whileHover={{ rotate: -6, scale: 1.08 }}
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
-      className="mx-2 inline-flex size-[0.95em] translate-y-[0.08em] items-center justify-center rounded-[0.28em] bg-ink align-baseline shadow-[0_8px_24px_rgb(23_21_19/0.35)] ring-4 ring-white"
+      className="mx-3 inline-flex size-[0.82em] items-center justify-center rounded-[0.24em] bg-ink align-middle shadow-[0_8px_24px_rgb(23_21_19/0.35)] ring-4 ring-white"
     >
-      <span className="text-[0.38em] font-bold tracking-tight text-white">
+      <span className="text-[0.34em] font-bold tracking-tight text-white">
         {profile.initials}
       </span>
     </motion.span>
@@ -39,12 +39,14 @@ export default function Hero() {
           {profile.name}!
         </motion.span>
         <motion.span variants={line} className="block">
-          <span className="text-ink-faint">I&rsquo;m a </span>
+          <span className="text-ink-faint">I&rsquo;m {profile.roleArticle} </span>
           <span className="text-ink">{profile.role}</span>
-          <span className="text-ink-faint"> at</span>
         </motion.span>
         <motion.span variants={line} className="flex flex-wrap items-center gap-x-5 gap-y-3">
-          <span className="text-accent">{profile.company}.</span>
+          <span>
+            <span className="text-ink-faint">{profile.companyLead} </span>
+            <span className="text-accent">{profile.company}.</span>
+          </span>
           {profile.openToWork && (
             <motion.span
               whileHover={{ scale: 1.05 }}
