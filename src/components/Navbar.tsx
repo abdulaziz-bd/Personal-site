@@ -10,19 +10,16 @@ const links = [
 
 function LogoMark() {
   return (
-    <span className="flex items-end gap-1">
-      {/* letter-A mark */}
-      <svg width="30" height="28" viewBox="0 0 32 30" aria-hidden="true">
-        <g
+    <span className="flex items-end gap-1.5">
+      {/* rounded-corner triangle mark */}
+      <svg width="30" height="27" viewBox="0 0 32 29" aria-hidden="true">
+        <path
+          d="M16 5 27 24.5 H5 Z"
           fill="none"
           stroke="currentColor"
-          strokeWidth="4.5"
-          strokeLinecap="round"
+          strokeWidth="6"
           strokeLinejoin="round"
-        >
-          <path d="M5.5 26.5 16 4.5 26.5 26.5" />
-          <path d="M10.5 18.5h11" />
-        </g>
+        />
       </svg>
       <span className="mb-0.5 inline-block size-2 rounded-full bg-accent" />
     </span>
