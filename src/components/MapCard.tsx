@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import {
+  AttributionControl,
   MapContainer,
   TileLayer,
   CircleMarker,
@@ -149,9 +150,10 @@ export default function MapCard() {
         zoom={HOME_ZOOM}
         zoomControl={false}
         scrollWheelZoom={false}
-        attributionControl={true}
+        attributionControl={false}
         className="z-0 h-full min-h-[380px] w-full flex-1"
       >
+        <AttributionControl position="topright" prefix={false} />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -202,8 +204,8 @@ export default function MapCard() {
         )}
       </MapContainer>
 
-      {/* bottom overlay: verdict + place label stack */}
-      <div className="pointer-events-none absolute inset-x-4 bottom-8 z-[1000] flex flex-col items-center gap-2">
+      {/* bottom overlay: verdict + place label stack, full width, faded top */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1000] flex w-full flex-col items-center gap-2 bg-gradient-to-t from-white via-white/85 to-transparent px-4 pb-4 pt-14">
         <AnimatePresence mode="wait">
           {verdict ? (
             <motion.p
@@ -230,7 +232,7 @@ export default function MapCard() {
           )}
         </AnimatePresence>
 
-        <div className="rounded-2xl bg-white/85 px-5 py-2 text-center backdrop-blur">
+        <div className="w-full text-center">
           <p className="text-[22px] font-semibold uppercase leading-tight tracking-[0.42em] text-ink">
             {location.city}
           </p>
