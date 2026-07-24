@@ -16,6 +16,9 @@ import { profile } from "../data/cv";
 const GERMANY_GEOJSON_URL =
   "https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/1_deutschland/4_niedrig.geo.json";
 
+const HOME: [number, number] = [profile.location.lat, profile.location.lon];
+const HOME_ZOOM = 11;
+
 type SearchResult = {
   lat: number;
   lon: number;
@@ -26,10 +29,13 @@ type SearchResult = {
 function FlyTo({ target }: { target: SearchResult | null }) {
   const map = useMap();
   useEffect(() => {
-    if (!target) return;
-    map.flyTo([target.lat, target.lon], target.inGermany ? 8 : 4, {
-      duration: 1.6,
-    });
+    if (target) {
+      map.flyTo([target.lat, target.lon], target.inGermany ? 8 : 4, {
+        duration: 1.6,
+      });
+    } else {
+      map.flyTo(HOME, HOME_ZOOM, { duration: 1.2 });
+    }
   }, [target, map]);
   return null;
 }
@@ -42,6 +48,15 @@ export default function MapCard() {
   >("idle");
   const [result, setResult] = useState<SearchResult | null>(null);
   const [germany, setGermany] = useState<GeoJsonObject | null>(null);
+
+  function onQueryChange(value: string) {
+    setQuery(value);
+    // empty search box returns the map home to Potsdam
+    if (value.trim() === "") {
+      setResult(null);
+      setStatus("idle");
+    }
+  }
 
   async function search(e: React.FormEvent) {
     e.preventDefault();
@@ -67,7 +82,7 @@ export default function MapCard() {
         inGermany,
       });
       setStatus(inGermany ? "yes" : "no");
-      // lazily load the Germany border so the "agreed" area lights up
+      // lazily load the Germany border so the agreed area lights up
       if (inGermany && !germany) {
         fetch(GERMANY_GEOJSON_URL)
           .then((r) => r.json())
@@ -79,8 +94,19 @@ export default function MapCard() {
     }
   }
 
+  const verdict =
+    status === "yes" && result
+      ? `Yes. ${result.name} works for me, anywhere in Germany does.`
+      : status === "no" && result
+        ? `${result.name} is outside my range. Germany-wide, for now.`
+        : status === "notfound"
+          ? "Could not find that place. Try another spelling."
+          : status === "error"
+            ? "Search hiccup. Please try again."
+            : null;
+
   return (
-    <BentoCard className="min-h-[360px] overflow-hidden !p-0">
+    <BentoCard className="min-h-[380px] overflow-hidden !p-0">
       <div className="absolute left-4 top-4 z-[1000]">
         <CardChip>Map</CardChip>
       </div>
@@ -92,8 +118,8 @@ export default function MapCard() {
       >
         <input
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Would I relocate to… (try Munich)"
+          onChange={(e) => onQueryChange(e.target.value)}
+          placeholder="Would I relocate to you? Try Munich"
           aria-label="Search a place to check relocation"
           className="w-full bg-transparent text-[12.5px] font-medium outline-none placeholder:text-ink-faint"
         />
@@ -119,12 +145,12 @@ export default function MapCard() {
       </form>
 
       <MapContainer
-        center={[location.lat, location.lon]}
-        zoom={11}
+        center={HOME}
+        zoom={HOME_ZOOM}
         zoomControl={false}
         scrollWheelZoom={false}
         attributionControl={true}
-        className="z-0 h-full min-h-[360px] w-full flex-1"
+        className="z-0 h-full min-h-[380px] w-full flex-1"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -133,7 +159,7 @@ export default function MapCard() {
         />
         <FlyTo target={result} />
 
-        {/* the "agreed" area — whole of Germany */}
+        {/* the agreed area: whole of Germany */}
         {germany && result?.inGermany && (
           <GeoJSON
             data={germany}
@@ -148,12 +174,12 @@ export default function MapCard() {
 
         {/* home: Potsdam */}
         <CircleMarker
-          center={[location.lat, location.lon]}
+          center={HOME}
           radius={8}
           pathOptions={{ color: "#ffffff", weight: 3, fillColor: "#f4530b", fillOpacity: 1 }}
         >
           <Tooltip direction="top" offset={[0, -8]}>
-            Home — {location.city} 🏠
+            Home, {location.city}
           </Tooltip>
         </CircleMarker>
 
@@ -170,60 +196,28 @@ export default function MapCard() {
             }}
           >
             <Tooltip direction="top" offset={[0, -8]} permanent>
-              {result.name} {result.inGermany ? "✅" : "🚫"}
+              {result.name}
             </Tooltip>
           </CircleMarker>
         )}
       </MapContainer>
 
-      {/* verdict banner */}
-      <div className="pointer-events-none absolute inset-x-4 bottom-10 z-[1000] flex flex-col items-center gap-1.5">
+      {/* bottom overlay: verdict + place label stack */}
+      <div className="pointer-events-none absolute inset-x-4 bottom-8 z-[1000] flex flex-col items-center gap-2">
         <AnimatePresence mode="wait">
-          {status === "yes" && result && (
+          {verdict ? (
             <motion.p
-              key={`yes-${result.name}`}
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              key={verdict}
+              initial={{ opacity: 0, y: 10, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 6 }}
-              className="rounded-2xl bg-emerald-600 px-4 py-2 text-center text-[12.5px] font-semibold text-white shadow-card-hover"
+              className={`rounded-2xl px-4 py-2 text-center text-[12.5px] font-semibold text-white shadow-card-hover ${
+                status === "yes" ? "bg-emerald-600" : "bg-ink"
+              }`}
             >
-              ✅ {result.name}? Deal — I&rsquo;m open to anywhere in Germany!
+              {verdict}
             </motion.p>
-          )}
-          {status === "no" && result && (
-            <motion.p
-              key={`no-${result.name}`}
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 6 }}
-              className="rounded-2xl bg-ink px-4 py-2 text-center text-[12.5px] font-semibold text-white shadow-card-hover"
-            >
-              🚫 {result.name} is outside my range — Germany-wide (for now).
-            </motion.p>
-          )}
-          {status === "notfound" && (
-            <motion.p
-              key="notfound"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="rounded-2xl bg-ink px-4 py-2 text-[12.5px] font-semibold text-white shadow-card-hover"
-            >
-              Couldn&rsquo;t find that place — try another spelling?
-            </motion.p>
-          )}
-          {status === "error" && (
-            <motion.p
-              key="error"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="rounded-2xl bg-ink px-4 py-2 text-[12.5px] font-semibold text-white shadow-card-hover"
-            >
-              Search hiccup — please try again.
-            </motion.p>
-          )}
-          {status === "idle" && (
+          ) : (
             <motion.p
               key="idle"
               initial={{ opacity: 0 }}
@@ -231,13 +225,22 @@ export default function MapCard() {
               exit={{ opacity: 0 }}
               className="rounded-full border border-accent/25 bg-white/90 px-3.5 py-1.5 text-[12px] font-semibold text-accent shadow-card backdrop-blur"
             >
-              {location.relocation} 🇩🇪 · {location.workModes.join(" · ")}
+              {location.relocation}
             </motion.p>
           )}
         </AnimatePresence>
-        <p className="rounded-full bg-white/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-muted backdrop-blur">
-          {location.city} · {location.coords}
-        </p>
+
+        <div className="rounded-2xl bg-white/85 px-5 py-2 text-center backdrop-blur">
+          <p className="text-[22px] font-semibold uppercase leading-tight tracking-[0.42em] text-ink">
+            {location.city}
+          </p>
+          <p className="mt-0.5 text-[11px] font-medium uppercase tracking-[0.34em] text-ink-muted">
+            {location.country}
+          </p>
+          <p className="mt-1 text-[10px] font-medium tracking-[0.18em] text-ink-faint">
+            {location.coords}
+          </p>
+        </div>
       </div>
     </BentoCard>
   );
