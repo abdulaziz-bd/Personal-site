@@ -12,7 +12,7 @@ function LogoMark() {
   return (
     <span className="flex items-end gap-1.5">
       {/* triangle mark, generously rounded corners */}
-      <svg width="28" height="26" viewBox="0 0 32 30" aria-hidden="true">
+      <svg width="40" height="37" viewBox="0 0 32 30" aria-hidden="true">
         <path
           d="M19.9 12 L22.6 17 Q26.5 24 18.5 24 L13.5 24 Q5.5 24 9.4 17 L12.1 12 Q16 5 19.9 12 Z"
           fill="none"
@@ -21,7 +21,7 @@ function LogoMark() {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="mb-0.5 inline-block size-2 rounded-full bg-accent" />
+      <span className="mb-1 inline-block size-2.5 rounded-full bg-accent" />
     </span>
   );
 }

@@ -15,12 +15,12 @@ function AvatarChip() {
     <motion.span
       whileHover={{ rotate: -6, scale: 1.08 }}
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
-      className="mx-3 inline-flex size-[1.1em] items-center justify-center overflow-hidden rounded-[0.26em] bg-ink align-middle shadow-[0_8px_24px_rgb(23_21_19/0.35)] ring-4 ring-white"
+      className="relative -top-[0.3em] mx-3 inline-flex size-[1.5em] items-center justify-center overflow-hidden rounded-[0.24em] bg-ink align-middle shadow-[0_8px_24px_rgb(23_21_19/0.35)] ring-4 ring-white"
     >
       <img
         src={profile.avatar}
         alt={profile.fullLegalName}
-        className="size-full object-cover object-top"
+        className="size-full object-cover object-center"
       />
     </motion.span>
   );
