@@ -21,10 +21,10 @@
 
   --radius-bento: 1.75rem;
 
-  /* Geologica renders heavy — remap the weight scale down one notch */
-  --font-weight-medium: 450;
-  --font-weight-semibold: 500;
-  --font-weight-bold: 600;
+  /* Geologica renders heavy — remap the weight scale down */
+  --font-weight-medium: 400;
+  --font-weight-semibold: 440;
+  --font-weight-bold: 520;
 }
 
 html {
@@ -36,7 +36,7 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   /* Geologica runs heavy — pull the variable weight down slightly */
-  font-weight: 325;
+  font-weight: 280;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
