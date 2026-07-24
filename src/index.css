@@ -38,3 +38,21 @@ body {
   background: var(--color-accent);
   color: #fff;
 }
+
+/* soft, light-mode look for OSM tiles inside the map card */
+.map-tiles {
+  filter: grayscale(1) brightness(1.04) contrast(0.92);
+}
+
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: #f4f3f1;
+}
+
+.leaflet-tooltip {
+  border-radius: 9999px;
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-card);
+  font-weight: 600;
+  font-size: 11px;
+}
