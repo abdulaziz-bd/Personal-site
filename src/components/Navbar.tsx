@@ -10,17 +10,21 @@ const links = [
 
 function LogoMark() {
   return (
-    <span className="flex items-center gap-1.5">
-      <svg width="34" height="30" viewBox="0 0 34 30" aria-hidden="true">
-        <path
-          d="M17 3.5c4.5 0 13 6.5 13 12.5 0 6.5-5 10.5-13 10.5S4 22.5 4 16C4 10 12.5 3.5 17 3.5Z"
+    <span className="flex items-end gap-1">
+      {/* letter-A mark */}
+      <svg width="30" height="28" viewBox="0 0 32 30" aria-hidden="true">
+        <g
           fill="none"
           stroke="currentColor"
           strokeWidth="4.5"
+          strokeLinecap="round"
           strokeLinejoin="round"
-        />
+        >
+          <path d="M5.5 26.5 16 4.5 26.5 26.5" />
+          <path d="M10.5 18.5h11" />
+        </g>
       </svg>
-      <span className="mb-3 inline-block size-1.5 rounded-full bg-accent" />
+      <span className="mb-0.5 inline-block size-2 rounded-full bg-accent" />
     </span>
   );
 }
@@ -51,15 +55,19 @@ export default function Navbar() {
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
           aria-expanded={open}
-          className="flex size-11 flex-col items-end justify-center gap-1.5 rounded-full bg-card shadow-card"
+          className="relative flex size-11 items-center justify-center rounded-full bg-card shadow-card"
         >
           <motion.span
-            animate={open ? { rotate: 45, y: 4, width: 18 } : { rotate: 0, y: 0 }}
-            className="block h-[2px] w-[18px] rounded bg-ink"
+            initial={false}
+            animate={open ? { rotate: 45, y: 0 } : { rotate: 0, y: -3.5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            className="absolute block h-[2px] w-[18px] rounded-full bg-ink"
           />
           <motion.span
-            animate={open ? { rotate: -45, y: -4, width: 18 } : { rotate: 0, y: 0 }}
-            className="mr-0 block h-[2px] w-[12px] rounded bg-ink"
+            initial={false}
+            animate={open ? { rotate: -45, y: 0 } : { rotate: 0, y: 3.5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            className="absolute block h-[2px] w-[18px] rounded-full bg-ink"
           />
         </motion.button>
 

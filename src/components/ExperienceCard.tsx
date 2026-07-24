@@ -14,8 +14,8 @@ export default function ExperienceCard() {
         variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
         className="relative mt-5 flex flex-col gap-5 pl-1"
       >
-        {/* timeline spine */}
-        <span className="absolute bottom-3 left-[7px] top-2 w-px bg-line" aria-hidden="true" />
+        {/* timeline spine — centered on the 13px dots (4px ul padding + 6.5px) */}
+        <span className="absolute bottom-3 left-[10px] top-2 w-px bg-line" aria-hidden="true" />
 
         {timeline.map((item) => (
           <motion.li
