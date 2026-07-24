@@ -56,7 +56,7 @@ export default function App() {
 
       <footer className="mt-16 flex flex-col items-center gap-2 text-center text-[13px] text-ink-muted">
         <p>
-          © {new Date().getFullYear()} {profile.name} ·{" "}
+          © {new Date().getFullYear()} {profile.fullLegalName} ·{" "}
           <a href={`mailto:${profile.email}`} className="underline underline-offset-4 hover:text-accent">
             {profile.email}
           </a>

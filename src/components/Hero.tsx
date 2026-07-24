@@ -15,11 +15,13 @@ function AvatarChip() {
     <motion.span
       whileHover={{ rotate: -6, scale: 1.08 }}
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
-      className="mx-3 inline-flex size-[0.98em] items-center justify-center rounded-[0.28em] bg-ink align-middle shadow-[0_8px_24px_rgb(23_21_19/0.35)] ring-4 ring-white"
+      className="mx-3 inline-flex size-[1.1em] items-center justify-center overflow-hidden rounded-[0.26em] bg-ink align-middle shadow-[0_8px_24px_rgb(23_21_19/0.35)] ring-4 ring-white"
     >
-      <span className="text-[0.4em] font-bold tracking-tight text-white">
-        {profile.initials}
-      </span>
+      <img
+        src={profile.avatar}
+        alt={profile.fullLegalName}
+        className="size-full object-cover object-top"
+      />
     </motion.span>
   );
 }
@@ -47,7 +49,7 @@ export default function Hero() {
           {profile.openToWork && (
             <motion.span
               whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-line bg-card px-5 py-2.5 align-middle text-[15px] font-medium tracking-normal text-ink shadow-card"
+              className="relative top-[0.2em] inline-flex items-center gap-2.5 rounded-full border border-line bg-card px-5 py-2.5 text-[15px] font-medium tracking-normal text-ink shadow-card"
             >
               <span className="relative flex size-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />

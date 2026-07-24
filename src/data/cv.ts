@@ -2,9 +2,10 @@
 // Populated from cv.md / config/profile.yml in the career-ops repo.
 
 export const profile = {
-  name: "Md Abdul Aziz",
-  shortName: "Abdul Aziz",
+  name: "Abdul Aziz",
+  fullLegalName: "Md Abdul Aziz",
   initials: "AA",
+  avatar: "/avatar.png",
   roleArticle: "an",
   roleTop: "Aspiring",
   roleMain: "Fullstack AI Engineer",
@@ -21,7 +22,6 @@ export const profile = {
     lat: 52.3906,
     lon: 13.0645,
     coords: "52.3906° N, 13.0645° E",
-    relocation: "Open to Relocate: Anywhere in Germany",
     workModes: ["On-site", "Hybrid", "Remote"],
   },
 };

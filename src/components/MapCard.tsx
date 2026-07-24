@@ -97,9 +97,9 @@ export default function MapCard() {
 
   const verdict =
     status === "yes" && result
-      ? `Yes. ${result.name} works for me, anywhere in Germany does.`
+      ? `${result.name} works for me.`
       : status === "no" && result
-        ? `${result.name} is outside my range. Germany-wide, for now.`
+        ? `${result.name} is a bit of a stretch right now.`
         : status === "notfound"
           ? "Could not find that place. Try another spelling."
           : status === "error"
@@ -206,8 +206,8 @@ export default function MapCard() {
 
       {/* bottom overlay: verdict + place label stack, full width, faded top */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[1000] flex w-full flex-col items-center gap-2 bg-gradient-to-t from-white via-white/85 to-transparent px-4 pb-4 pt-14">
-        <AnimatePresence mode="wait">
-          {verdict ? (
+        <AnimatePresence>
+          {verdict && (
             <motion.p
               key={verdict}
               initial={{ opacity: 0, y: 10, scale: 0.96 }}
@@ -218,16 +218,6 @@ export default function MapCard() {
               }`}
             >
               {verdict}
-            </motion.p>
-          ) : (
-            <motion.p
-              key="idle"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="rounded-full border border-accent/25 bg-white/90 px-3.5 py-1.5 text-[12px] font-semibold text-accent shadow-card backdrop-blur"
-            >
-              {location.relocation}
             </motion.p>
           )}
         </AnimatePresence>
