@@ -11,13 +11,13 @@ const links = [
 function LogoMark() {
   return (
     <span className="flex items-end gap-1.5">
-      {/* rounded-corner triangle mark */}
-      <svg width="30" height="27" viewBox="0 0 32 29" aria-hidden="true">
+      {/* triangle mark with genuinely curved corners */}
+      <svg width="28" height="26" viewBox="0 0 32 30" aria-hidden="true">
         <path
-          d="M16 5 27 24.5 H5 Z"
+          d="M14.3 8.1 Q16 5 17.7 8.1 L25.3 21.9 Q27 25 23.5 25 L8.5 25 Q5 25 6.7 21.9 Z"
           fill="none"
           stroke="currentColor"
-          strokeWidth="6"
+          strokeWidth="3.2"
           strokeLinejoin="round"
         />
       </svg>
@@ -52,20 +52,32 @@ export default function Navbar() {
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
           aria-expanded={open}
-          className="relative flex size-11 items-center justify-center rounded-full bg-card shadow-card"
+          className="flex size-11 items-center justify-center rounded-full bg-card shadow-card"
         >
-          <motion.span
-            initial={false}
-            animate={open ? { rotate: 45, y: 0 } : { rotate: 0, y: -3.5 }}
-            transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            className="absolute block h-[2px] w-[18px] rounded-full bg-ink"
-          />
-          <motion.span
-            initial={false}
-            animate={open ? { rotate: -45, y: 0 } : { rotate: 0, y: 3.5 }}
-            transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            className="absolute block h-[2px] w-[18px] rounded-full bg-ink"
-          />
+          <span className="flex w-[18px] flex-col gap-[4px]">
+            <motion.span
+              initial={false}
+              animate={open ? { opacity: 0, scaleX: 0.4 } : { opacity: 1, scaleX: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="block h-[2px] w-[30%] self-end rounded-full bg-ink"
+            />
+            <motion.span
+              initial={false}
+              animate={open ? { rotate: 45, y: 3 } : { rotate: 0, y: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="block h-[2px] w-full rounded-full bg-ink"
+            />
+            <motion.span
+              initial={false}
+              animate={
+                open
+                  ? { rotate: -45, y: -3, width: "100%" }
+                  : { rotate: 0, y: 0, width: "65%" }
+              }
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+              className="block h-[2px] self-start rounded-full bg-ink"
+            />
+          </span>
         </motion.button>
 
         <AnimatePresence>

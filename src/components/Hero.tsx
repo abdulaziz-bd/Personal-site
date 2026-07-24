@@ -32,7 +32,7 @@ export default function Hero() {
       variants={{ hidden: {}, show: { transition: { staggerChildren: 0.14, delayChildren: 0.15 } } }}
       className="mt-14 sm:mt-20"
     >
-      <h1 className="text-[clamp(2.4rem,6.5vw,4.3rem)] font-semibold leading-[1.08] tracking-tight">
+      <h1 className="text-[clamp(2.1rem,5.8vw,3.8rem)] font-medium leading-[1.1] tracking-tight">
         <motion.span variants={line} className="block">
           Hi, I&rsquo;m
           <AvatarChip />
@@ -68,7 +68,7 @@ export default function Hero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
           transition={{ type: "spring", stiffness: 320, damping: 16 }}
-          className="rounded-full bg-ink px-8 py-4 text-[17px] font-semibold text-white shadow-[0_16px_32px_-12px_rgb(23_21_19/0.5)]"
+          className="rounded-full bg-ink px-8 py-4 text-[16px] font-medium text-white shadow-[0_16px_32px_-12px_rgb(23_21_19/0.5)]"
         >
           Book a call
         </motion.a>
