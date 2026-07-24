@@ -6,9 +6,8 @@ export const profile = {
   shortName: "Abdul Aziz",
   initials: "AA",
   roleArticle: "an",
-  role: "Aspiring Fullstack AI Engineer",
-  companyLead: "researching at",
-  company: "Fraunhofer FOKUS",
+  roleTop: "Aspiring",
+  roleMain: "Fullstack AI Engineer",
   email: "abdulazizbd17@gmail.com",
   website: "https://azizcode.dev",
   github: "https://github.com/abdulaziz-bd",
@@ -28,8 +27,8 @@ export const profile = {
 };
 
 export type Publication = {
-  title: string;
-  authors: string;
+  shortTitle: string;
+  fullTitle: string;
   venue: string;
   year: string;
   url?: string;
@@ -37,68 +36,45 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
-    title:
+    shortTitle: "LLM-Assisted Course Search",
+    fullTitle:
       "LLM-Assisted Course Search: Parsing Structured Parameters from Natural Language Queries",
-    authors: "M. Upravitelev, C. Krauss, T.-S. An, B. Do, N. Schoppa, Md Abdul Aziz",
     venue: "IEEE ECEI",
     year: "2025",
   },
   {
-    title:
+    shortTitle: "Sign Language Gesture Recognition",
+    fullTitle:
       "Sign Language Gesture Recognition using Bayesian Optimization and Transfer Learning",
-    authors: "C. Lippert, M. H. Shahriar, et al., Md Abdul Aziz",
     venue: "ResearchGate",
     year: "2022",
     url: "http://dx.doi.org/10.13140/RG.2.2.32482.40643",
   },
   {
-    title:
+    shortTitle: "Automated Fruit Disease Recognition",
+    fullTitle:
       "An In-Depth Analysis of Segmentation Techniques in Automated Local Fruit Disease Recognition",
-    authors: "M. T. Habib, A. Khatun, Md Abdul Aziz, M. S. Uddin, F. Ahmed",
     venue: "Springer",
     year: "2020",
     url: "https://doi.org/10.1007/978-981-33-6424-0_9",
   },
 ];
 
-export type Language = {
-  flag: string;
+export const cefrLevels = ["A1", "A2", "B1", "B2", "C1", "C2"] as const;
+
+export type SpokenLanguage = {
   name: string;
   level: string;
-  pct: number;
-  joke: string;
+  cefr?: (typeof cefrLevels)[number]; // highest reached level on the CEFR strip
 };
 
-export const languages: Language[] = [
-  {
-    flag: "🇬🇧",
-    name: "English",
-    level: "Professional",
-    pct: 88,
-    joke: "Fluent in meetings, memes & merge conflicts",
-  },
-  {
-    flag: "🇩🇪",
-    name: "German",
-    level: "B1 · exam candidate",
-    pct: 55,
-    joke: "Ich schaffe das! 💪",
-  },
-  {
-    flag: "🐍",
-    name: "Python",
-    level: "Native",
-    pct: 97,
-    joke: "My actual mother tongue",
-  },
-  {
-    flag: "⌨️",
-    name: "TypeScript",
-    level: "Fluent",
-    pct: 92,
-    joke: "strict mode: always on",
-  },
+export const spokenLanguages: SpokenLanguage[] = [
+  { name: "English", level: "Professional" },
+  { name: "German", level: "B1 (exam candidate)", cefr: "B1" },
 ];
+
+export const languagesFootnote =
+  "Off the record: native in Python, fluent in TypeScript.";
 
 export type TimelineItem = {
   title: string;
@@ -140,14 +116,14 @@ export const projects: Project[] = [
     tagline: "Real-time AI voice translator · 10+ languages",
     url: "https://github.com/abdulaziz-bd/TarjumaAI",
     gradient: "from-orange-500 via-rose-500 to-purple-600",
-    emblem: "文A",
+    emblem: "TA",
   },
   {
     name: "LRS Analytics Dashboard",
     tagline: "xAPI learning analytics for learners, tutors & admins",
     url: "https://github.com/abdulaziz-bd/lrs-analytics-dashboard",
     gradient: "from-sky-500 via-indigo-500 to-slate-800",
-    emblem: "▤",
+    emblem: "LRS",
   },
   {
     name: "Doc Generator",
@@ -256,20 +232,5 @@ export const experienceTabs: ExperienceTab[] = [
       "Improved LLM-as-judge pedagogical-appropriateness score from 3.83 to 4.2 (1–5 Likert).",
     ],
     tech: ["Mistral 7B", "Qwen3 30B", "LoRA", "xAPI", "MCP"],
-  },
-  {
-    id: "research",
-    step: "05",
-    label: "Publications",
-    heading: "Peer-Reviewed Research",
-    period: "2020 – 2025",
-    summary:
-      "Three publications across LLM applications, computer vision, and ML optimization.",
-    highlights: [
-      "LLM-Assisted Course Search: Parsing Structured Parameters from Natural Language Queries — IEEE ECEI 2025.",
-      "Sign Language Gesture Recognition using Bayesian Optimization and Transfer Learning (2022).",
-      "An In-Depth Analysis of Segmentation Techniques in Automated Local Fruit Disease Recognition (2020, Springer).",
-    ],
-    tech: ["LLM", "Computer Vision", "Transfer Learning"],
   },
 ];
