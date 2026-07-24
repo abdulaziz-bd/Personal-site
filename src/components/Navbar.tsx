@@ -11,13 +11,13 @@ const links = [
 function LogoMark() {
   return (
     <span className="flex items-end gap-1.5">
-      {/* triangle mark with deeply curved corners */}
+      {/* triangle mark, generously rounded corners */}
       <svg width="28" height="26" viewBox="0 0 32 30" aria-hidden="true">
         <path
-          d="M13.1 9.7 Q16 4.5 18.9 9.7 L24.6 19.8 Q27.5 25 21.5 25 L10.5 25 Q4.5 25 7.4 19.8 Z"
+          d="M19.9 12 L22.6 17 Q26.5 24 18.5 24 L13.5 24 Q5.5 24 9.4 17 L12.1 12 Q16 5 19.9 12 Z"
           fill="none"
           stroke="currentColor"
-          strokeWidth="3"
+          strokeWidth="2.8"
           strokeLinejoin="round"
         />
       </svg>
