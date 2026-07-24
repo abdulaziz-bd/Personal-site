@@ -6,6 +6,8 @@ import ProjectsCard from "./components/ProjectsCard";
 import TechStackCard from "./components/TechStackCard";
 import MapCard from "./components/MapCard";
 import ExperienceTabsCard from "./components/ExperienceTabsCard";
+import PublicationsCard from "./components/PublicationsCard";
+import LanguagesCard from "./components/LanguagesCard";
 import { gridStagger } from "./components/BentoCard";
 import { profile } from "./data/cv";
 
@@ -38,6 +40,18 @@ export default function App() {
       >
         <MapCard />
         <ExperienceTabsCard />
+      </motion.div>
+
+      {/* bento grid — row 3 */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={gridStagger}
+        className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3"
+      >
+        <PublicationsCard />
+        <LanguagesCard />
       </motion.div>
 
       <footer className="mt-16 flex flex-col items-center gap-2 text-center text-[13px] text-ink-muted">
