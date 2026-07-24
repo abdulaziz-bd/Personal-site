@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system,
+  --font-sans: "Geologica", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
 
   --color-accent: #f4530b;
@@ -30,6 +30,8 @@ body {
   background-color: var(--color-page);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  /* Geologica runs heavy — pull the variable weight down slightly */
+  font-weight: 350;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
