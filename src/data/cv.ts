@@ -36,6 +36,14 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
+    shortTitle: "Contextualized Learning Assistant",
+    fullTitle:
+      "Contextualized Learning Assistant: A Middleware Architecture for LMS Integration",
+    venue: "SETE / ICWL",
+    year: "2026",
+    url: "https://doi.org/10.1007/978-981-92-0042-9_21",
+  },
+  {
     shortTitle: "LLM-Assisted Course Search",
     fullTitle:
       "LLM-Assisted Course Search: Parsing Structured Parameters from Natural Language Queries",
