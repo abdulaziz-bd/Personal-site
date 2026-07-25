@@ -46,9 +46,10 @@ export const publications: Publication[] = [
   {
     shortTitle: "LLM-Assisted Course Search",
     fullTitle:
-      "LLM-Assisted Course Search: Parsing Structured Parameters from Natural Language Queries",
-    venue: "IEEE ECEI",
+      "Large Language Model-Assisted Course Search: Parsing Structured Parameters from Natural Language Queries",
+    venue: "Engineering Proceedings",
     year: "2025",
+    url: "https://doi.org/10.3390/engproc2025103018",
   },
   {
     shortTitle: "Sign Language Gesture Recognition",
