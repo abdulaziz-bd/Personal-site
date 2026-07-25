@@ -209,7 +209,7 @@ export const experienceTabs: ExperienceTab[] = [
     summary:
       "Supported open online learning at one of Germany's leading computer science institutes.",
     highlights: [
-      "Created and curated LMS course materials and YouTube content supporting 1,000+ learners, with xAPI-compliant data tracking.",
+      "Created and curated LMS course materials and YouTube content supporting.",
       "Managed the internal authentication server and administered team tooling (Nextcloud, Slack, Zoom, Miro, Trello).",
     ],
     tech: ["LMS", "xAPI", "Nextcloud", "Linux"],
