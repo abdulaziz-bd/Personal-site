@@ -5,7 +5,6 @@ import { profile } from "../data/cv";
 const links = [
   { label: "GitHub", href: profile.github },
   { label: "LinkedIn", href: profile.linkedin },
-  { label: "Website", href: profile.website },
 ];
 
 function LogoMark() {
