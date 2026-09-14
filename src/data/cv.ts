@@ -121,25 +121,32 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "TarjumaAI",
-    tagline: "Real-time AI voice translator · 10+ languages",
-    url: "https://github.com/abdulaziz-bd/TarjumaAI",
-    gradient: "from-orange-500 via-rose-500 to-purple-600",
-    emblem: "TA",
+    name: "ReChatta",
+    tagline: "LLM chatbot with document chat & reference previewer",
+    url: "https://github.com/rechatta/rechatta",
+    gradient: "from-emerald-500 via-teal-600 to-slate-900",
+    emblem: "RC",
   },
   {
-    name: "LRS Analytics Dashboard",
+    name: "SchulTask",
+    tagline: "Multi-tenant corporate L&D platform with AI course builder",
+    url: "https://github.com/schultask/schultask-frontend",
+    gradient: "from-amber-500 via-orange-600 to-rose-700",
+    emblem: "ST",
+  },
+  {
+    name: "OnubadAI",
+    tagline: "AI-driven translator",
+    url: "https://github.com/abdulaziz-bd/OnubadAI",
+    gradient: "from-orange-500 via-rose-500 to-purple-600",
+    emblem: "OA",
+  },
+  {
+    name: "Learning Analytics Dashboard",
     tagline: "xAPI learning analytics for learners, tutors & admins",
     url: "https://github.com/abdulaziz-bd/lrs-analytics-dashboard",
     gradient: "from-sky-500 via-indigo-500 to-slate-800",
     emblem: "LRS",
-  },
-  {
-    name: "Doc Generator",
-    tagline: "LLM-based GitHub docs · –50% manual effort",
-    url: "https://github.com/abdulaziz-bd/doc-generator",
-    gradient: "from-emerald-500 via-teal-600 to-slate-900",
-    emblem: "{ }",
   },
 ];
 
