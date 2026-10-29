@@ -79,7 +79,7 @@ export type SpokenLanguage = {
 
 export const spokenLanguages: SpokenLanguage[] = [
   { name: "English", level: "Professional" },
-  { name: "German", level: "B1 (exam candidate)", cefr: "B1" },
+  { name: "German", level: "B2", cefr: "B2" },
 ];
 
 export const languagesFootnote =
