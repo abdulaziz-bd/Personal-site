@@ -99,7 +99,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     title: "Research Assistant at Fraunhofer FOKUS",
-    meta: "2022 – Present · Berlin · Full time",
+    meta: "2022 – Present · Berlin · Part time",
   },
   {
     title: "Student Assistant at HPI Potsdam",
