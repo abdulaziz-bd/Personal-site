@@ -8,7 +8,7 @@ export const profile = {
   avatar: "/avatar.png",
   roleArticle: "an",
   roleTop: "Aspiring",
-  roleMain: "Fullstack AI Engineer",
+  roleMain: "Fullstack Software Engineer",
   email: "abdulazizbd17@gmail.com",
   website: "https://azizcode.dev",
   github: "https://github.com/abdulaziz-bd",
@@ -94,7 +94,7 @@ export type TimelineItem = {
 export const timeline: TimelineItem[] = [
   {
     title: "M.Sc. Data Science — Uni Potsdam",
-    meta: "2022 – 2026 · Thesis in progress",
+    meta: "2022 – 2026",
     faded: true,
   },
   {
@@ -240,7 +240,7 @@ export const experienceTabs: ExperienceTab[] = [
     step: "04",
     label: "Education",
     heading: "M.Sc. Data Science — University of Potsdam",
-    period: "2022 – 2026 (expected) · BS CS, Daffodil Int'l University (GPA 3.8/4.0)",
+    period: "2022 – 2026 · BS CS, Daffodil Int'l University (GPA 3.8/4.0)",
     summary:
       "Thesis: Conversational vs. Static AI Assistance in Learning Analytics Dashboards — impacts on cognitive load and user performance.",
     highlights: [
