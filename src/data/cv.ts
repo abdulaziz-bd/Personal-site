@@ -103,7 +103,7 @@ export const timeline: TimelineItem[] = [
   },
   {
     title: "Student Assistant at HPI Potsdam",
-    meta: "2022 – 2024 · Potsdam · Part time",
+    meta: "2022 – 2024 · Potsdam · Minijob",
   },
   {
     title: "Web Developer at BD IT Lab",
